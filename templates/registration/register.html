@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{%block title%}Register{%endblock%}
+
+{%block head%}<link rel="stylesheet" href="{%static 'css/login_reg.css'%}">{% endblock%}
+
+{% block content %}<br><br><br><br><br><br><br>
+        <ul style="list-style: none; font-size: 20px;">
+            <li>→  Usernmae - 150 characters or fewer. Letters, digits and @/./+/-/_ only.</li>
+            <li>→  Your password can not be too similar to your other personal information.</li>
+            <li>→  Your password must contain at least 8 characters.</li>
+            <li>→  Your password can not be a commonly used password.</li>
+            <li>→  Your password can not be entirely numeric.</li>
+        </ul>
+        <div class="center">
+            <h1>Register</h1>
+            <form method="POST" class="form">
+                {%csrf_token%}
+                {{form.as_p}}
+                <br><br>
+                <a href="{%url 'login'%}">Have an Account?? Click here to Login</a>
+                <br><br>
+                <button class="btn p-btn">Register</button>
+            </form>
+        
+{% endblock %}

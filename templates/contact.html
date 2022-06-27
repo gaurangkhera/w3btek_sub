@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+
+{%block title%}Contact Us{%endblock%}
+
+{% block content %}<br><br><br><br><br><br><br><h1>Contact Us</h1><br>
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn p-btn">Submit</button>
+ </form>
+ <script>
+    var user = "{{user.id}}";
+    document.getElementById("user").value = user;
+</script>
+{% endblock%}

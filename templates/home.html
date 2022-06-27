@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+
+{%block title%}Home{%endblock%}
+
+{% block content %}<br>
+<div class="row">
+    <div class="col-2">
+        <br><br><br><br><br><br>
+        <h1>Lorem ipsum dolor<br>sit amet consectetur.</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad<br>in perspiciatis fugiat corrupti architecto esse cake?</p>
+        <br>
+        <a href="" class="btn">Order Now &#8594</a>
+        
+    </div>
+    <div class="col-2">
+        <br><br><br>
+        <img src="{%static 'img/main.png'%}" alt="">
+    </div>
+</div>
+
+<div id="features" class="section-p1">
+    <div class="features-box">
+        <img src="{%static 'img/features/f1.png'%}" alt="">
+            <h6>Free Shipping</h6>
+    </div>
+    <div class="features-box">
+        <img src="{%static 'img/features/f2.png'%}" alt="">
+            <h6>Easy Online Order</h6>
+    </div>
+    <div class="features-box">
+        <img src="{%static 'img/features/f3.png'%}" alt="">
+            <h6>Save Money</h6>
+    </div>
+    <div class="features-box">
+        <img src="{%static 'img/features/f4.png'%}" alt="">
+            <h6>Promotions</h6>
+    </div>
+    <div class="features-box">
+        <img src="{%static 'img/features/f5.png'%}" alt="">
+            <h6>Happines</h6>
+    </div>
+    <div class="features-box">
+        <img src="{%static 'img/features/f6.png'%}" alt="">
+            <h6>24/7 Support</h6>
+    </div>
+</div>
+    <h2>Featured Items -</h2>
+    <center>
+        <div class="cards">
+            {% for product in object_list|slice:":4" %}
+                <div class="card">
+                    <img src="/media/{{ product.prod_img_main }}" alt="Product Img">
+                    <h2 class="anim">{{ product.prod_name }}</h2>
+                    <p>${{product.prod_price}}</p>
+                    <br>
+                    <a href="{%url 'detail' product.pk%}" class="btn">Buy Now</a>
+                </div>
+            {% endfor %}
+        </div>
+    <center>
+{% endblock%}

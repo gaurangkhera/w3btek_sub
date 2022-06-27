@@ -1,0 +1,63 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xino Threads | {%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/detail.css'%}">
+    <link rel="icon" type="image/x-icon" href="{%static 'img/favicon.png'%}">
+    {%block head%}{% endblock%}
+</head>
+
+<body onload="main()">
+    <nav>
+        <div class="logo">
+            <a href="/"><img src="{% static 'img/favicon.png' %}" alt="Logo Image"></a>
+        </div>
+        <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="nav-links">
+            
+            <li><a class="u" href="{%url 'home'%}">Home</a></li>
+            <li><a class="u" href="{% url 'about' %}">About</a></li>
+            {%if user.is_authenticated%}
+
+                <li><a class="u" href="{% url 'product' %}">Products</a></li>
+                <li><a class="u" href="{%url 'contact'%}">Contact Us</a></li>
+                {% if request.user.is_superuser %}
+                    <li><a class="log" href="/admin">Admin</a></li>
+                {% endif %}
+                <li><a class="log" href="{%url 'logout'%}">Logout</a></li>
+
+            {% else %}
+
+                <li><a class="log" href="{% url 'login' %}">Login</a></li>
+                <li><a class="log" href="{% url 'register' %}">Register</a></li>
+
+            {% endif %}
+
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+              </label>
+            </div>
+        </ul>
+  
+    </nav>
+    <div class="container">
+        {%block content%}{% endblock%}
+    </div>
+    <br><br>
+    <footer>XINO Threads Inc.</footer>
+</body>
+<script src="{%static 'js/script.js'%}"></script>
+
+</html>

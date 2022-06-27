@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+
+{%block title%}Products{%endblock%}
+
+{% block content %}<br><br><br><br><br><br>
+    <h1> Our Products - </h1><br>
+    <center>
+        <div class="cards">
+            {% for product in object_list%}
+                <div class="card">
+                    <img src="/media/{{ product.prod_img_main }}" alt="Product Img">
+                    <h2 class="anim">{{ product.prod_name |slice:":15" }}...</h2>
+                    <p>${{product.prod_price}}</p>
+                    <br>
+                    <a href="{%url 'detail' product.pk%}" class="btn">Buy Now</a>
+                    <br>
+                </div>
+            {% endfor %}
+        </div>
+    </center>
+{% endblock%}

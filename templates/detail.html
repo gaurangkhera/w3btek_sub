@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{%block title%}{{product.prod_name}}{%endblock%}
+
+{% block content %}<br><br><br><br><br><br><br><br><BR><br><br>
+    <h1>{{product.name}}</h1><br>
+        {%if user.is_authenticated%}
+            <div class="cards-b">
+                    <div class="card-b">
+                        <img src="" width="80%" id="ProductImg">
+                        <div class="small-img-row">
+                            <div class="small-img-col">
+                                <img src="/media/{{product.prod_img_main}}" alt="" width="80%" class="small-img" onclick="main()">
+                            </div>
+                            {% if product.prod_img_back == '' %}
+                            {% else %}
+                            <div class="small-img-col">
+                                <img src="/media/{{product.prod_img_back}}" alt="" width="80%" class="small-img" onclick="back()">
+                            </div>
+                            {% endif %}
+                            {% if product.prod_img_other == '' %}
+                            
+                            {% else %}
+                            <div class="small-img-col">
+                                <img src="/media/{{product.prod_img_other}}" alt="" width="80%" class="small-img" onclick="other()">
+                            </div>
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                    <div class="card-b form" style="font-size: 1.2rem">
+                        <p>Home / Product Details</p>
+                        <h1>{{product.name}}</h1>
+                        <h4>$30</h4>
+                        <br><br>
+                        <select class="size">
+                            <option>Size</option>
+                            <option>XS</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                            <option>XXL</option>
+                        </select><br><br>
+                        <input type="number" placeholder="Quantity" value="1" class="quant" min="0" class="input"><br>
+                        <h3>Product Details - </h3>
+                        <p>{{product.prod_desc}}</p>
+                        <br><br>
+                        <a href="/" class="btn">Buy</a>
+                        <br>
+                        <h3>Only Cash On Delivery</h3>
+                    </div>
+                </div>
+            </div>
+        {%else%}
+            <center><a href="{% url 'register' %}">Register</a> Or <a href="{% url 'register' %}">Login</a> Yourself</center>
+        {%endif%}
+{% endblock %}

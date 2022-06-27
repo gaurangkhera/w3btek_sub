@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{%block title%}Add Your Product{%endblock%}
+
+{% block content %}<br>
+    <h1>&nbsp;&nbsp;&nbsp;Register</h1>
+    <br><br>
+    <form method="POST" class="form">
+        {%csrf_token%}
+        {{form.as_p}}
+        <br><br>
+        <button class="btn p-btn">Upload</button>
+    </form>
+    <script>
+        var user = "{{user.id}}";
+        document.getElementById("user").value = user;
+    </script>
+{% endblock %}

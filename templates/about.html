@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{%block head%}<link rel="stylesheet" href="{%static 'css/about.css'%}">{% endblock%}
+
+{%block title%}About{%endblock%}
+
+{% block content %}<br>
+<br><br><br><br><br><br><br><br>
+            <h1>
+                About XINO THREADS
+                <hr>
+            </h1>
+            <h2>
+                ANY CLOTH IS THE DREAM CLOTH, WITH THE RIGHT KIND OF AESTHETICS
+            </h2>
+
+            <h2>XINO THREADS is one of the companies, founded by Gaurang and Mahir, under the aegis of Delhi Public School's computer club, XINO. They have risen to great heights, owing to the help from the club's members and the school itself. We present to you, our very own online store!</h2>
+
+            <a href="{% url 'product' %}" class="btn">Start Shopping!</a>
+{% endblock%}
